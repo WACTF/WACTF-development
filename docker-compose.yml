@@ -1,0 +1,39 @@
+# The docker-compose file you deliver needs to:
+# - Define which ports are exposed, and what they map to in your challenge
+# - Name and tag the container for use on the docker registry
+# - Define the folder that your dockerfile (and challenge source code) exists in
+
+# The version MUST be 3.
+version: '3'
+# This is general structure of the docker-compose file that will be used in prod
+services:
+
+# Name is <category>-<tier>
+# If there are multiple containers for your category and tier, name them like so <category>-<tier>-<function> i.e. exp-3-mongodb / exp-3-website
+  exp-3:
+  # Your container name is <category>-<tier>
+    container_name: exp-3
+    # This should be the directory your dockerfile exists in.
+    # Note, other challenges will live in ./ too, so ensure your directory name is adequately unique (ie. exp-3)
+    build: ./exp-3/
+    # Your challenges need to be tagged for pushing to the docker registry. The syntax is <domain>:<port>/wactf0x04/<container name>
+    image: registry.capture.tf:5000/wactf0x04/exp-3
+    # Ports! the syntax is <external>:<containerlocal>
+    # You can use whatever local container port you wish (as long as it doesn't break anything, and is above 1024 so a non-root user can bind to it)
+    # If you need to bind to a privileged port (such as running a webserver) checkout the Examples-Dockerfiles/ directory
+    ports:
+      - 80:2222
+    deploy:
+      # Leave these unless your challenge is in Java (if that's you, read this: https://developers.redhat.com/blog/2017/03/14/java-inside-docker/)
+      resources:
+        limits:
+          cpus: '0.10'
+          memory: 180M
+        reservations:
+          cpus: '0.05'
+          memory: 10M
+    cap_drop:
+      - NET_RAW
+
+# Want to include something else in docker-compose that's not in this template?
+# Look up its compatibility here: https://kompose.io/conversion/
