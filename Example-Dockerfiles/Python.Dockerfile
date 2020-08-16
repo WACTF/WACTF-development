@@ -4,7 +4,7 @@
 # Rename to 'Dockerfile'
 
 # This line defines your base docker image.
-FROM python:2
+FROM python:alpine
 
 # This sets the working directory
 WORKDIR /usr/src/app

@@ -32,4 +32,4 @@ CMD /usr/bin/sudo /usr/sbin/apachectl -D FOREGROUND
 # Drop privs
 USER user
 
-# Your docker-compose should redirect port 80
+# Your docker-compose should expose port 80

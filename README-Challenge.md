@@ -1,7 +1,7 @@
 | metadata | <> |
 |--- | --- |
 | Developer Name(s) | |
-| Best Contact Slack/Email | |
+| Best Contact Slack handle / Email address | |
 | Challenge Category | |
 | Challenge Tier | |
 | Challenge Type | Container/FileDrop/Both |

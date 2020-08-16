@@ -19,7 +19,7 @@ services:
     # Your challenges need to be tagged for pushing to the docker registry. The syntax is <domain>:<port>/wactf0x04/<container name>
     image: registry.capture.tf:5000/wactf0x04/exp-3
     # Ports! the syntax is <external>:<containerlocal>
-    # You can use whatever local container port you wish (as long as it doesn't break anything, and is above 1024 so a non-root user can bind to it)
+    # You can use whatever local container port you wish (as long as it's above 1024 so a non-root user can bind to it)
     # If you need to bind to a privileged port (such as running a webserver) checkout the Examples-Dockerfiles/ directory
     ports:
       - 80:2222

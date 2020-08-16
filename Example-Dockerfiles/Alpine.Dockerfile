@@ -2,8 +2,7 @@
 
 # Rename to 'Dockerfile'
 
-# remove version to default to "latest" (you probably want the latest)
-FROM alpine:3.10.3
+FROM alpine:latest
 
 # allows to not cache the index locally, keeps containers small
 # https://gist.github.com/sgreben/dfeaaf20eb635d31e1151cb14ea79048

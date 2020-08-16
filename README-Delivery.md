@@ -1,6 +1,6 @@
 # Uploading images/README's to the Registry
 
-you are encouraged to do this during development too
+Developers are encouraged to do this during development too
 
 - how to auth
 - use docker-compose push

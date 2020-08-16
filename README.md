@@ -3,9 +3,6 @@
 This is some important documentation on how to build your challenge(s) so they work in harmony with others in the production Kubernetes & Docker environment.
 
 ## TODO
--	Complete instructions on dockersl.im / distroless containers
--	Update hardening decision tree based on dockersl.im findings
--	Complete `setup.sh` to install dockersl.im
 -	Complete instructions on pushing containers to the registry
 -	Update example Dockerfiles to be aligned with hardening requirements
 

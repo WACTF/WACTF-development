@@ -1,7 +1,7 @@
 | metadata | <> |
 |--- | --- |
 | Developer Name(s) | Cam |
-| Best Contact Slack/Email | cameron@hivint.com/C_Sto (WACTF Slack) |
+| Best Contact Slack handle / Email address | cameron@hivint.com/C_Sto (WACTF Slack) |
 | Challenge Category | Crypto |
 | Challenge Tier | 1 |
 | Challenge Type | FileDrop |
