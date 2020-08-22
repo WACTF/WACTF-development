@@ -1,0 +1,21 @@
+version: '3'
+services:
+  shellbox:
+    build: shellbox
+    container_name: shellbox
+    hostname: shellbox
+    image: registry.capture.tf/wactf0x04/shellbox
+    ports:
+      - "22:22"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FSETID
+      - FOWNER
+      - SETGID
+      - SETUID
+      - NET_BIND_SERVICE
+      - SYS_CHROOT
+      - KILL

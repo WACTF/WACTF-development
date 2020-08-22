@@ -91,7 +91,7 @@ Depending on the risk posed by your challenge there may be additional hardening 
 
 ### RCE or interactive shell possible?
 
-The developer must take additional defence in depth measures for containers that can result in RCE or an interactive shell. Developers are encouraged to explore:
+The developer must consider additional defence in depth measures for containers that can result in RCE or an interactive shell. It’s not mandatory that the developer perform additional hardening, but if it’s possible they should. Developers are encouraged to explore:
 
 1. Using [DockerSlim](https://dockersl.im) with the `--include-shell` option and/or `--include-bin` to add binaries to a minified image,
 2. [NsJail](https://nsjail.dev/),
