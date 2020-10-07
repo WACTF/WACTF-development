@@ -21,7 +21,7 @@ An example Repository, which all developers have read access to, is [challenge-t
 Please use the above repository as a guide when setting up your own repository. However, a high level description of the structure is as follows:
 
 ### Repository Root
-The reporsitory root should only contain 1 file, and 1 or more folders, these are:
+The repository root should only contain 1 file, and 1 or more folders, these are:
 
 - File
   - `docker-compose.yml`
