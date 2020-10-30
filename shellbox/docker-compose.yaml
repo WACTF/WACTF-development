@@ -1,6 +1,7 @@
 version: '3'
 services:
   shellbox:
+    restart: always
     build: shellbox
     container_name: shellbox
     hostname: shellbox
@@ -23,5 +24,3 @@ services:
         reservations:
           cpus: '0.05'
           memory: 25M
-      restart_policy:
-        condition: on-failure
