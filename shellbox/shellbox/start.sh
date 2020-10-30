@@ -1,7 +1,7 @@
 #!/bin/sh
 # THIS RUNS AS ROOT
 
-#fix sshd: no hostkeys available -- exiting.
+# fix sshd: no hostkeys available -- exiting.
 /usr/bin/ssh-keygen -A
 
 # run sshd

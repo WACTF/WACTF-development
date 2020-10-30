@@ -11,11 +11,15 @@ services:
       - ALL
     cap_add:
       - CHOWN
-      - DAC_OVERRIDE
-      - FSETID
-      - FOWNER
       - SETGID
       - SETUID
       - NET_BIND_SERVICE
       - SYS_CHROOT
-      - KILL
+    deploy:
+      resources:
+        limits:
+          cpus: '0.10'
+          memory: 50M
+        reservations:
+          cpus: '0.05'
+          memory: 25M
