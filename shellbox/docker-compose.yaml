@@ -23,3 +23,5 @@ services:
         reservations:
           cpus: '0.05'
           memory: 25M
+      restart_policy:
+        condition: on-failure
