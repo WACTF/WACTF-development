@@ -16,6 +16,7 @@ services:
       - SETUID
       - NET_BIND_SERVICE
       - SYS_CHROOT
+      - KILL
     deploy:
       resources:
         limits:
@@ -23,4 +24,4 @@ services:
           memory: 50M
         reservations:
           cpus: '0.05'
-          memory: 25M
+          memory: 20M # 0: 16.82MiB / 1: 18.58MiB / 4: 23.04MiB
