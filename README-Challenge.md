@@ -17,6 +17,8 @@
 |--- | --- |
 |Challenge Flag| WACTF{} |
 |Challenge Vuln|  |
+|Docker Usage Idle| % CPU / ~MB RAM |
+|Docker Usage Expected Peak| % CPU / ~MB RAM |
 ---
 
 # docker-compose.yml

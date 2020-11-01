@@ -32,9 +32,9 @@ Add `"default-runtime": "runsc"` to `/etc/docker/daemon.json` and restart docker
 
 **Prod version of docker-compose:**
 
-Use version `1.26.0`. You can get the correct version of docker-compose by running the following:
+Use version `1.27.4`. You can get the correct version of docker-compose by running the following:
 ```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
