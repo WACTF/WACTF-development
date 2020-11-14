@@ -9,10 +9,10 @@
 
 ## Container Specific
 1. The container meets these requirements: [README-Setup.md#your-container](../README-Setup.md#your-container)
+2. Ensure the `docker-compose` file has been updated to reflect the resource `reservations` and `limits` in line with the challenge's documentation
 
 ## Filedrop Specific
 1. Does the filedrop name and format meet the requirements: [README-Delivery.md#file-drop-based](../README-Delivery.md#file-drop-based)
-2. Ensure the `docker-compose` file has been updated to reflect the resource `reservations` and `limits` in line with the challenge's documentation
 
 # Challenge needs updating?
 1. Send it to individual responsible - tell them to let you know once the changes have been made
