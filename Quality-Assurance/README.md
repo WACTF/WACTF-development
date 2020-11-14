@@ -1,5 +1,5 @@
 # Quality Assurance 101
-1. Check that documentation is complete and using the latest revision: [README-Challenge.md](README-Challenge.md)
+1. Check that documentation is complete and using the latest revision: [README-Challenge.md](../README-Challenge.md)
 2. Is the flag the correct format: [README-Setup.md#flag-format](../README-Setup.md#flag-format)
 3. Make the challenge exist on the scoreboard: [README-Scoreboard.md](README-Scoreboard.md)
 4. Ensure the deliverable meets these requirements: [README-Delivery.md#delivery-checklist](../README-Delivery.md#delivery-checklist)
