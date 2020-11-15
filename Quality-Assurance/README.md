@@ -19,8 +19,9 @@
 2. (optional) if dev isn't on git every day, let them know there is changes/feedback
 
 # Challenge is ready for the scoreboard
-1. Copy challenge into 2020 repo in the correct folder etc [2020](https://github.com/wactf-org/2020-prod)
+1. Copy challenge into 2020 repo in the correct folder (`ChallengeFiles` for Docker based, `FileDrop` for filedrop) [2020](https://github.com/wactf-org/2020-prod)
 2. Update the [core compose yml file](https://github.com/WACTF-org/2020-prod/blob/master/ChallengeFiles/docker-compose.yaml) (unless it's a filedrop, then dont?)
-3. Make the challenge exist on the scoreboard: [README-Scoreboard.md](README-Scoreboard.md)
-4. Update relevant spot in progress table in [README.md](https://github.com/WACTF-org/2020-prod/blob/master/README.md) to `R`
-5. Celebrate starting [Hackers (1995)](https://www.imdb.com/title/tt0113243/) from the beginning, and watching it all the way through again
+3. Put the challenge readme and solvers into the relevant folder in `ChallengeDocumentation`
+4. Make the challenge exist on the scoreboard: [README-Scoreboard.md](README-Scoreboard.md)
+5. Update relevant spot in progress table in [README.md](https://github.com/WACTF-org/2020-prod/blob/master/README.md) to `R`
+6. Celebrate by starting [Hackers (1995)](https://www.imdb.com/title/tt0113243/) from the beginning, and watching it all the way through again
