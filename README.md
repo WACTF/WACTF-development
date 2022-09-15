@@ -8,9 +8,9 @@ This is some important documentation on how to build your challenge(s) so they w
 
 ## Overview of the WACTF tech stack
 
-At a high level, WACTF is a collection of Docker containers replicated across “namespaces” in a Kubernetes (K8) cluster. Each team is provisioned a namespace containing the challenges and support containers. Support containers include an OpenVPN container for teams to connect to their namespace, and a simple shellbox they can SSH to for accepting connections/reverse-shells. In K8-land containers are referred to as “pods” – to get a little technical, one pod can hold numerous containers but in WACTF’s case it’s 1:1 so we use "pods" and "containers" interchangeably.
+At a high level, WACTF is a collection of Docker containers replicated across “namespaces” in a Kubernetes (K8s) cluster. Each team is provisioned a namespace containing the challenges and support containers. Support containers include an OpenVPN container for teams to connect to their namespace, and a simple shellbox they can SSH to for accepting connections/reverse-shells. In K8s-land containers are referred to as “pods” – to get a little technical, one pod can hold numerous containers but in WACTF’s case it’s 1:1 so we use "pods" and "containers" interchangeably.
 
-Each namespace has various security/firewall policies applied to isolate it from other team’s namespaces and internal resources (such as the metadata API’s of most cloud providers). Pods within a namespace can speak to one another and also to a DNS server. We use DNS to address challenges as (by default) K8 un-deterministically allocates internal IP addresses to pods. Each pod also has resource constraints and logging/monitoring capabilities.
+Each namespace has various security/firewall policies applied to isolate it from other team’s namespaces and internal resources (such as the metadata API’s of most cloud providers). Pods within a namespace can speak to one another and also to a DNS server. We use DNS to address challenges as (by default) K8s un-deterministically allocates internal IP addresses to pods. Each pod also has resource constraints and logging/monitoring capabilities.
 
 Players connect to their team’s environment via an OpenVPN pod within their namespace which is the only pod that has external networking capabilities. Put it all together and you get something that looks a little like this work of art:
 
@@ -41,5 +41,10 @@ The tier of challenge you're developing correspond to the level of difficulty it
 
 ## What now?
 
-Go read the [README-Setup.md](README-Setup.md) file, then the [docker-compose](docker-compose.yml) file, then the `Dockerfile`'s in the [Example-Dockerfiles](Example-Dockerfiles) directory, and lastly the [README-Challenge.md](README-Challenge.md) and [README-Challenge-Example.md](README-Challenge-Example.md) files.
+Read the other documents in this order:
+- [README-Setup.md](README-Setup.md),
+- [docker-compose.yml](docker-compose.yml),
+- The `Dockerfile`'s in the [Example-Dockerfiles](Example-Dockerfiles) directory,
+- [README-Delivery.md](README-Delivery.md)and,
+- [README-Challenge.md](README-Challenge.md) and [README-Challenge-Example.md](README-Challenge-Example.md).
 

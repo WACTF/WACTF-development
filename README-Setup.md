@@ -1,20 +1,20 @@
 # Setting up for development
 
-**I’ll start with the bad news.**
+### The Bad News
 
-gVisor isn’t supported in Docker for Windows or Mac. The **good news** is we have provided a `setup.sh` script (and a Vagrantfile) in the [Automation](Automation) directory that will spin up a suitable Ubuntu testing VM for you. As gVisor is a drop-in replacement for runC, you _should_ be safe to do all your development in a different environment and perform your integration tests in the VM. We are using Ubuntu 18.04 for the following setup.
+gVisor isn’t supported in Docker for Windows or Mac. The **good news** is we have provided a `setup.sh` script (and a Vagrantfile) in the [Automation](Automation) directory that will spin up a suitable Ubuntu testing VM for you. As gVisor is a drop-in replacement for runC, you _should_ be safe to do all your development in a different environment and perform your integration tests in the VM. We are using Ubuntu 22.04 for the following setup.
 
-**Prod version of Docker:**
+### Prod version of Docker
 
-Use the latest patch level of Docker CE version `19.03` (at the time of writing `19.03.11`). Follow the [Docker instructions](https://docs.docker.com/engine/installation/linux/ubuntu/) (or refer to the `setup.sh` script in the [Automation](Automation) directory).
+Use the latest patch level of Docker CE version `20.10` (at the time of writing `20.10.18`). Follow the [Docker instructions](https://docs.docker.com/engine/installation/linux/ubuntu/) (or refer to the `setup.sh` script in the [Automation](Automation) directory).
 
-**Prod version of gVisor**
+### Prod version of gVisor
 
-Use the latest patch level of gVisor version `2020` (at the time of writing `20200522`). Follow the `Install from an apt repository` [instructions here](https://gvisor.dev/docs/user_guide/install/) (or refer to the `setup.sh` script in the [Automation](Automation) directory).
+Use the latest patch level of gVisor version `2022` (at the time of writing `20220913`). Follow the `Install from an apt repository` [instructions here](https://gvisor.dev/docs/user_guide/install/) (or refer to the `setup.sh` script in the [Automation](Automation) directory).
 
-After installing gVisor, you'll need to run `sudo runsc install` which will complete the Docker quickstart install.
+If Docker is already installed it will autoconfigure, otherwise run `sudo runsc install`.
 
-**Set gVisor as the default runtime**
+### Set gVisor as the default runtime
 
 Add `"default-runtime": "runsc"` to `/etc/docker/daemon.json` and restart docker `sudo systemctl restart docker`. `daemon.json` should look like this:
 
@@ -30,21 +30,14 @@ Add `"default-runtime": "runsc"` to `/etc/docker/daemon.json` and restart docker
 }
 ```
 
-**Prod version of docker-compose:**
+### Prod version of docker-compose
 
-Use version `1.27.4`. You can get the correct version of docker-compose by running the following:
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+Since WACTF0x05 we've moved to the compose plugin for Docker, rather than a seperate binary. You may already have it installed, check if `docker compose` works, otherwise install is from:
+`sudo apt-get install docker-compose-plugin`
 
-**Important note**
+## I've never used Docker before :/
 
-Get these major and minor versions of Docker/docker-compose/gVisor to ensure that your challenge(s) will work as expected in the game environment. Other versions of Docker _may_ work, but don't be that guy/girl.
-
-**I've never used Docker before though :/**
-
-We have provided some sample Dockerfiles in the [Example-Dockerfiles](Example-Dockerfiles) directory to help get you started. Be mindful though that they might not meet the container hardening requirements listed below. They are a good starting point though.
+We have provided some sample Dockerfiles in the [Example-Dockerfiles](Example-Dockerfiles) directory to help get you started. Be mindful that they might not meet the container hardening requirements listed below. They are a good starting point though.
 
 Now here's some handy commands that will make your docker-dev life better:
 
@@ -62,7 +55,7 @@ Your challenge(s) are expected to work out-of-the-box. A game organiser should o
 
 ## Port Ranges
 
-In previous years, WACTF had port ranges for challenges. In K8-land, this is no longer a requirement. Your challenge should run on a non-privileged port (that’s `>1024`) or use the canonical port if the service you are running has one i.e a webserver on port 80. As a side note, there’s no requirement for encryption in transit (like TLS / HTTPS), teams will be encapsulated in their own OpenVPN stream, so avoid this unnecessary complexity.
+Your challenge should run on a non-privileged port (that’s `>1024`) or use the canonical port if the service you are running has one i.e a webserver on port `80`. As a side note, there’s no requirement for encryption in transit (like TLS / HTTPS), teams will be encapsulated in their own OpenVPN stream, so avoid this unnecessary complexity.
 
 ## Flag Format
 
@@ -70,7 +63,7 @@ The flag format is: `WACTF{FLAG_OF_YOUR_CHOICE}` (obviously nothing that could b
 
 # Environment & Container Hardening Requirements
 
-There are enforced container restrictions for workloads in our K8 environment. Your challenge container must meet these requirements, or it will not integrate.
+There are enforced container restrictions for workloads in our K8s environment. Your challenge container must meet these requirements, or it will not integrate.
 
 ## Your container:
 
@@ -78,25 +71,26 @@ There are enforced container restrictions for workloads in our K8 environment. Y
 	* [Docker Scratch](https://hub.docker.com/_/scratch) (see [Example-Dockerfiles](Example-Dockerfiles)),
 	* A maintained Alpine based image (such as `python:alpine`),
 	* The latest Alpine image `alpine:latest`,
-	* A maintained image (such as `ubuntu:18.04`) that is run through [DockerSlim](https://dockersl.im) (see below); or,
+	* A maintained image (such as `ubuntu:22.04`) that is run through [DockerSlim](https://dockersl.im) (see below); or,
 	* A [Distroless Container](https://github.com/GoogleContainerTools/distroless) (see below).
 2. MUST work in the [gVisor](https://gvisor.dev/) runtime.
 3. MUST NOT run the challenge as `root` unless:
 	* Binding to ports and then dropping privileges (such as Apache/nginx).
-4. MUST NOT require any unsupported `docker-compose` keys (such as volume mounts). If you use the supplied `docker-compose` file you will be fine, you can check [here](https://kompose.io/conversion/) for compatibility.
-5. MUST NOT permit players to gain `root` privileges within the container.
-6. MUST NOT require additional Linux capabilities (such as `NET_ADMIN` or `--privileged` mode).
+4. MUST NOT require any unsupported `docker-compose` keys (such as volume mounts). If you use the supplied `docker-compose.yml` file you will be fine, you can check [here](https://kompose.io/conversion/) for compatibility.
+5. MUST NOT require additional Linux capabilities (such as `NET_ADMIN` or `--privileged` mode).
+6. SHOULD NOT permit players to gain `root` privileges within the container. You can request an exemption for priv-esc challenges.
 
 Depending on the risk posed by your challenge there may be additional hardening measures you need to perform:
 
 ### RCE or interactive shell possible?
 
-The developer must consider additional defence in depth measures for containers that can result in RCE or an interactive shell. It’s not mandatory that the developer perform additional hardening, but if it’s possible they should. Developers are encouraged to explore:
+The developer must **consider** additional defence in depth measures for containers that can result in RCE or an interactive shell. It’s not mandatory that the developer perform additional hardening, but if it’s possible they should. Developers are encouraged to explore:
 
-1. Using [DockerSlim](https://dockersl.im) with the `--include-shell` option and/or `--include-bin` to add binaries to a minified image,
-2. [NsJail](https://nsjail.dev/),
-3. `chroot` jails, and/or;
-4. Removing unnecessary binaries from the image.
+1. Removing unnecessary Linux capabilities via the `docker-compose.yml` file,
+2. Using [DockerSlim](https://dockersl.im) with the `--include-shell` option and/or `--include-bin` to add binaries to a minified image,
+3. [NsJail](https://nsjail.dev/),
+4. `chroot` jails, and/or;
+5. Removing unnecessary binaries from the image.
 
 ## Using DockerSlim
 

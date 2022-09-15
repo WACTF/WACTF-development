@@ -3,8 +3,8 @@
 # - Name and tag the container for use on the docker registry
 # - Define the folder that your dockerfile (and challenge source code) exists in
 
-# The version MUST be 3.
-version: '3'
+# The version MUST be 3.8
+version: '3.8'
 # This is general structure of the docker-compose file that will be used in prod
 services:
 
@@ -16,8 +16,8 @@ services:
     # This should be the directory your dockerfile exists in.
     # Note, other challenges will live in ./ too, so ensure your directory name is adequately unique (ie. exp-3)
     build: ./exp-3/
-    # Your challenges need to be tagged for pushing to the docker registry. The syntax is <domain>:<port>/wactf0x04/<container name>
-    image: registry.capture.tf:5000/wactf0x04/exp-3
+    # Your challenges need to be tagged for pushing to the docker registry. The syntax is <domain>:<port>/wactf0x05/<container name>
+    image: registry.capture.tf:5000/wactf0x05/exp-3
     # Ports! the syntax is <external>:<containerlocal>
     # You can use whatever local container port you wish (as long as it's above 1024 so a non-root user can bind to it)
     # If you need to bind to a privileged port (such as running a webserver) checkout the Examples-Dockerfiles/ directory
