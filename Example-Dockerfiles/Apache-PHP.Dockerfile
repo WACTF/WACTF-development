@@ -26,10 +26,10 @@ COPY ./src/ /var/www/localhost/htdocs/
 # RUN rm -f /var/www/localhost/htdocs/index.html
 # RUN sed -i 's/DirectoryIndex index.html/DirectoryIndex index.php/g' /etc/apache2/httpd.conf
 
-# Run apache
-CMD /usr/bin/sudo /usr/sbin/apachectl -D FOREGROUND
-
 # Drop privs
 USER user
 
 # Your docker-compose should expose port 80
+
+# Run apache
+CMD /usr/bin/sudo /usr/sbin/apachectl -D FOREGROUND

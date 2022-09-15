@@ -2,7 +2,7 @@
 
 The method planned originally for challenge submission was to allow developers push access to the WACTF container registry, however, due to a lack of access control tools, this method has changed.
 
-The current method provides each developer with a GitHub repository, which is located within the [WACTF-org organisation](https://github.com/WACTF-org). 
+The current method provides each developer with a GitHub repository, which is located within the [WACTF-org organisation](https://github.com/WACTF-org).
 
 Standard developers will have full read/write access to their own repo **only**.
 
@@ -10,7 +10,7 @@ Developers who are performing QA/reviewing submissions, will have full read/writ
 
 The idea then, is to have developers push challenges to their own repo. This can occur right at the end of development when the challenge is ready for review, or throughout the development process.
 
-When a developer is happy their challenge conforms to all requirements, and is ready for delivery, they can create an issue and tag a member of the reviewers team. This kicks off the review process, and changes will be made by both persons until the reviewer is happy, and the issue is labeled as "QA Complete".
+When a developer is happy their challenge conforms to all requirements, and is ready for delivery, they can create an issue (this may have already been created for them) and tag a member of the reviewers team. This kicks off the review process, and changes will be made by both persons until the reviewer is happy, and the issue is labeled as "QA Complete".
 
 At this point, the developer has completed everything that is required of them.
 
@@ -21,6 +21,7 @@ An example Repository, which all developers have read access to, is [challenge-t
 Please use the above repository as a guide when setting up your own repository. However, a high level description of the structure is as follows:
 
 ### Repository Root
+
 The repository root should only contain 1 file, and 1 or more folders, these are:
 
 - File
@@ -57,9 +58,9 @@ See below for which steps need to be taken when delivery the two different chall
 
 1. Clone your developer repository: `git clone git@github.com:WACTF-org/username-challenges.git`
 2. Add all files and code, remembering to conform to the Repository Structure: `cd username-challenge && cp -r ~/all_chal_files/ .`
-3. Add and commit your changes: `git add --all && git commit -m "meaningful comment here"`
+3. Add and commit your changes: `git add --all && git commit -m "appropriate non penis based comment here"`
 4. Push your changes, so that they appear within GitHub: `git push`
-5. Create a GitHub issue within your respository
+5. Create a GitHub issue within your respository (This may have been created for you already)
 6. Within the issue, tag an individual reviewer via their name, i.e. `@C_Sto`. Or, tag all reviewers via `@Reviewers`
 7. The QA process will then begin, with the reviewer suggesting changes and fixes which need to be made
 8. Apply fixes and changes as needed, until the reviewer is satisfied
