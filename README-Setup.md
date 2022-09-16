@@ -43,11 +43,11 @@ Now here's some handy commands that will make your docker-dev life better:
 
 |Command|What it does|
 |---|---|
-| docker-compose up | This starts the Docker containers specified in the [docker-compose](docker-compose.yml) file |
-| docker-compose up -d | This does the same as above, but launches in daemon mode so you don't have the "How do I exit VIM???" problem |
-| docker-compose stop | This will stop the Docker containers |
-| docker-compose rm | This removes the containers, you will want to do this if you are devving things (you won't have to download the base images again) |
-| docker-compose build | This will re-build the Docker containers (if you make a change, rm then do this) |
+| docker compose up | This starts the Docker containers specified in the [docker-compose](docker-compose.yml) file |
+| docker compose up -d | This does the same as above, but launches in daemon mode so you don't have the "How do I exit VIM???" problem |
+| docker compose stop | This will stop the Docker containers |
+| docker compose rm | This removes the containers, you will want to do this if you are devving things (you won't have to download the base images again) |
+| docker compose build | This will re-build the Docker containers (if you make a change, rm then do this) |
 
 ## Autonomy
 
