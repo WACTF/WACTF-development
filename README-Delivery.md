@@ -27,7 +27,7 @@ The repository root should only contain 1 file, and 1 or more folders, these are
 - File
   - `docker-compose.yml`
 - Folders
-  - 1 or more challenge folder roots i.e. `exploit-1`
+  - 1 or more challenge folder roots i.e. `exp-1`
 
 ### Challenge Folder Root
 
@@ -35,7 +35,7 @@ Within each challenge folder, 2 files should exist, and either 1 or 2 folders sh
 
 - Files
   - `Dockerfile`
-  - Challenge documentation in markdown i.e.`exploit-1.md`
+  - Challenge documentation in markdown i.e.`exp-1.md`
 - Folders
   - `docker-files` which contains all source code and artifacts used in your challenge container
   - (optional) `solution` which contains the scripts or commands needed to solve the challenge
@@ -44,7 +44,7 @@ Within each challenge folder, 2 files should exist, and either 1 or 2 folders sh
 
 1. Your Dockerfile meets the hardening requirements here: [README-Setup.md](README-Setup.md)
 2. The flag format is `WACTF{}`
-3. You have run `docker stats` to collect your challenge's idle CPU/Memory usage and expected peak usage during the solve and have caputed these figures (rougly) in your documentation
+3. You have run `docker stats` to collect your challenge's idle CPU/Memory usage and expected peak usage during the solve and have captured these figures in your documentation
 4. Your repository conforms to the specified Repository Structure as shown above
 5. If applicable, your repository has a solution script within the `solution` folder
 6. You have a `docker-compose.yml` file in your repository root
