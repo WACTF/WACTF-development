@@ -3,7 +3,7 @@
 | metadata                                  | <>                                     |
 |-------------------------------------------|----------------------------------------|
 | Developer Name(s)                         | Cam                                    |
-| Best Contact Slack handle / Email address | cameron@NotHivint😢.com/C_Sto (WACTF Slack) |
+| Best Contact (Slack handle / Email address) | cameron@NotHivint😢.com/C_Sto (WACTF Slack) |
 | Challenge Category                        | Crypto                                 |
 | Challenge Tier                            | 1                                      |
 | Challenge Type                            | Both                                   |
@@ -22,32 +22,6 @@
 | Docker Usage Idle          | 0% CPU / 6MB RAM                                                    |
 | Docker Usage Expected Peak | 20% CPU / 44MB RAM                                                  |
 ---
-
-## docker-compose.yml
-
-```docker
-# Not applicable for this challenge, but by way of example:
-
-version: '3'
-services:
-
-  exp-3:
-    container_name: exp-3
-    build: ./exp-3/
-    image: registry.capture.tf:5000/wactf0x04/exp-3
-    ports:
-      - 80:2222
-    deploy:
-      resources:
-        limits:
-          cpus: '0.10'
-          memory: 180M
-        reservations:
-          cpus: '0.05'
-          memory: 10M
-    cap_drop:
-      - NET_RAW
-```
 
 ## Challenge PoC.py
 

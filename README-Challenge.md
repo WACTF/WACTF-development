@@ -1,7 +1,7 @@
 | metadata | <> |
 |--- | --- |
 | Developer Name(s) | |
-| Best Contact Slack handle / Email address | |
+| Best Contact (Slack handle / Email address) | |
 | Challenge Category | |
 | Challenge Tier | |
 | Challenge Type | Container/FileDrop/Both |
@@ -21,15 +21,8 @@
 |Docker Usage Expected Peak| % CPU / ~MB RAM |
 ---
 
-# docker-compose.yml
-
-```
-#
-```
-
 # Challenge PoC.py
 You are required to provide either:
 - detailed step by step instructions on how to solve your challenge; or, 
-- a `win.py` (or language of your choosing) scripted solution
+- a `win.py` (or language of your choosing) scripted solution in a `solution` folder
 
-Scripts are preferable. Paste here.
