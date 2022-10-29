@@ -17,8 +17,8 @@
 |--- | --- |
 |Challenge Flag| WACTF{} |
 |Challenge Vuln|  |
-|Docker Usage Idle| % CPU / ~MB RAM |
-|Docker Usage Expected Peak| % CPU / ~MB RAM |
+|Docker Usage Idle| ~MB RAM |
+|Docker Usage Peak| ~MB RAM |
 ---
 
 # Challenge PoC.py

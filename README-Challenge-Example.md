@@ -19,8 +19,8 @@
 |----------------------------|---------------------------------------------------------------------|
 | Challenge Flag             | WACTF{lol_basic_auth_feels_kinda_bad_and_is_useless_over_plaintext} |
 | Challenge Vuln             | Basic authentication header on all requests leaks flag              |
-| Docker Usage Idle          | 0% CPU / 6MB RAM                                                    |
-| Docker Usage Expected Peak | 20% CPU / 44MB RAM                                                  |
+| Docker Usage Idle          | 6MB RAM                                                    |
+| Docker Usage Peak | 44MB RAM                                                  |
 ---
 
 ## Challenge PoC.py

@@ -19,15 +19,16 @@ services:
     # Your challenges need to be tagged for pushing to the docker registry. The syntax is <domain>:<port>/wactf0x05/<container name>
     image: registry.capture.tf:5000/wactf0x05/exp-3
     # Ports! the syntax is <external>:<containerlocal>
-    # You can use whatever local container port you wish (as long as it's above 1024 so a non-root user can bind to it)
-    # If you need to bind to a privileged port (such as running a webserver) checkout the Examples-Dockerfiles/ directory
+    # See here for more info: https://github.com/WACTF/WACTF-development/blob/master/README-Setup.md#port-ranges
+    # If you need your container to bind to a privileged port (such as running a webserver) checkout the Examples-Dockerfiles/ directory
     ports:
       - 80:2222
     deploy:
-      # Leave these unless your challenge is in Java (if that's you, read this: https://developers.redhat.com/blog/2017/03/14/java-inside-docker/)
+      # You need to benchmark your container(s). It's super important your container doesn't OOM itself during normal game load
+      # See here: https://github.com/WACTF/WACTF-development/blob/master/README-Setup.md#benchmarking
       resources:
         limits:
-          cpus: '0.10'
+          cpus: '0.10' # this is 10% of a CPU core on the Kubernetes cluster. That's quite a lot!
           memory: 180M
         reservations:
           cpus: '0.05'

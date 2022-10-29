@@ -57,6 +57,26 @@ Your challenge(s) are expected to work out-of-the-box. A game organiser should o
 
 Your challenge should run on a non-privileged port (that’s `>1024`) or use the canonical port if the service you are running has one i.e a webserver on port `80`. As a side note, there’s no requirement for encryption in transit (like TLS / HTTPS), teams will be encapsulated in their own OpenVPN stream, so avoid this unnecessary complexity.
 
+## Benchmarking
+
+Use `docker stats` or the view in Docker Desktop to collect CPU and memory information about your container. It's super important that your container doesn't run out of memory (OOM) during the game. Remember, there's a maximum of 4 players per instance of your container, so run a few automated tools against your container while also executing the solve to see where it peaks. Capture your results in your documentation and your `docker-compose.yml` file.
+
+If your container OOMs during the game, Kubernetes will restart it automatically, but if it regularly OOMs Kubernetes will increase the delay before restarting and it becomes difficult for players to solve.
+```
+reservations:
+  cpus: '0.05' # 5% of a CPU core is dedicated to this container. Remember, we're running on server hardware, so this should be sufficient!
+  memory: 10M # this should be sufficient for many alpine or scratch-based containers
+```
+Reserved container figures should be sufficient to run your container at idle, or with very little load (i.e if a websiite, a load of the homepage).
+```
+limits:
+  cpus: '0.10'
+  memory: 180M
+```
+The limits must be sufficient to run your container at peak load. `memory` is more important that `cpus` here. If your container is slow at peak load that's fine, but if it runs out of memory that's bad. Add a 10-20% buffer to the peak memory usage you observe and configure your `docker-compose.yml`.
+
+If you are building in Java, this might help you: [https://developers.redhat.com/blog/2017/03/14/java-inside-docker/](https://developers.redhat.com/blog/2017/03/14/java-inside-docker/).
+
 ## Flag Format
 
 The flag format is: `WACTF{FLAG_OF_YOUR_CHOICE}` (obviously nothing that could be considered generally offensive). For challenges that players may be able to `strings` (or similar) the flag when you don't want them to, you can specify your own flag format, ensure this is well documented in the challenge documentation provided with your deliverable.
