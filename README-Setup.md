@@ -91,14 +91,14 @@ There are enforced container restrictions for workloads in our K8s environment. 
 	* [Docker Scratch](https://hub.docker.com/_/scratch) (see [Example-Dockerfiles](Example-Dockerfiles)),
 	* A maintained Alpine based image (such as `python:alpine`),
 	* The latest Alpine image `alpine:latest`,
-	* A maintained image (such as `ubuntu:22.04`) that is run through [DockerSlim](https://dockersl.im) (see below); or,
-	* A [Distroless Container](https://github.com/GoogleContainerTools/distroless) (see below).
+	* A [Distroless Container](https://github.com/GoogleContainerTools/distroless) (see below); or,
+  * Only if absolutely necessary: A maintained non-EOL image (such as `ubuntu:22.04`) - you will required to justify why you needed to do this.
 2. MUST work in the [gVisor](https://gvisor.dev/) runtime.
 3. MUST NOT run the challenge as `root` unless:
-	* Binding to ports and then dropping privileges (such as Apache/nginx).
+	* Using a process which spawns a low-priv user that is used to run untrusted workloads (such as Apache/nginx).
 4. MUST NOT require any unsupported `docker-compose` keys (such as volume mounts). If you use the supplied `docker-compose.yml` file you will be fine, you can check [here](https://kompose.io/conversion/) for compatibility.
 5. MUST NOT require additional Linux capabilities (such as `NET_ADMIN` or `--privileged` mode).
-6. SHOULD NOT permit players to gain `root` privileges within the container. You can request an exemption for priv-esc challenges.
+6. SHOULD NOT permit players to gain `root` privileges within the container. You can request an exemption only if your container can run in `gVisor` and obtaining `root` is part of the game.
 
 Depending on the risk posed by your challenge there may be additional hardening measures you need to perform:
 
@@ -107,7 +107,7 @@ Depending on the risk posed by your challenge there may be additional hardening 
 The developer must **consider** additional defence in depth measures for containers that can result in RCE or an interactive shell. It’s not mandatory that the developer perform additional hardening, but if it’s possible they should. Developers are encouraged to explore:
 
 1. Removing unnecessary Linux capabilities via the `docker-compose.yml` file,
-2. Using [DockerSlim](https://dockersl.im) with the `--include-shell` option and/or `--include-bin` to add binaries to a minified image,
+2. Using [DockerSlim](https://dockersl.im) with the `--include-shell` option and/or `--include-bin` to add binaries to a minified image (see below for example),
 3. [NsJail](https://nsjail.dev/),
 4. `chroot` jails, and/or;
 5. Removing unnecessary binaries from the image.
