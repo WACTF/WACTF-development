@@ -5,8 +5,9 @@
 2. Is the flag the correct format: [README-Setup.md#flag-format](../README-Setup.md#flag-format)
 3. Ensure the deliverable meets these requirements: [README-Delivery.md#delivery-checklist](../README-Delivery.md#delivery-checklist)
 4. Ensure the challenge is solvable as expected without any "mucking around" to get it working
-5. Can it broken badly in some other way?
-6. Does it fit the tier that it's meant for: [README.md#challenge-difficulty](../README.md#challenge-difficulty)
+5. Check the flag you get is the same as in the documentation
+6. Can it broken in some other way?
+7. Does it fit the tier that it's meant for: [README.md#challenge-difficulty](../README.md#challenge-difficulty)
 
 ## Container Specific
 
